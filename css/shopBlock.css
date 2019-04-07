@@ -1,0 +1,28 @@
+.shopColumn{
+    background-color: darkgrey;
+        width: 33%;
+        
+}
+
+.shopBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom:2px;
+    border: 2px solid #000;
+}
+
+.boostInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.boostDescription h2 {
+    margin-top: 0;
+
+}
+
+.boostDescription{
+     margin-left: 10px;
+
+}

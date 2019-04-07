@@ -1,0 +1,97 @@
+.gameWindow {
+    display: flex;
+    justify-content: space-between
+}
+
+.clickerColumn{
+    width: 33%;
+    background-color: cornflowerblue;
+    height: 98vh; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(../img/background1.jpg) ;
+    background-repeat:round;
+}
+
+#clickerPic img {
+    border-radius: 150px;
+    width: 250px;
+}
+
+#clickerPic img:active {
+    border-radius: 150px;
+    width: 240px;
+}
+
+.clickerInfo {
+    font-size: 50px;
+    color: white;
+}
+
+
+.boostDescription {
+    color:white;
+    font-size: 40px;
+}
+
+.shopBlock img{
+    border-radius: 100px
+}
+
+
+
+
+
+
+
+
+
+
+.bonusColumn{
+    background-color: burlywood;
+        width: 33%;
+}
+
+.shopColumn{
+    background-color: darkgrey;
+        width: 33%;
+        
+}
+
+.shopBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom:2px;
+    border: 2px solid #000;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.boostInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.boostDescription h2 {
+    margin-top: 0;
+
+}
+
+.boostDescription{
+     margin-left: 10px;
+    flex-grow: 5;
+
+}
+
+.boostPic{
+    flex-grow: 1;
+}
+
+
+
+.
+
+  

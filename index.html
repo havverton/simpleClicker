@@ -2,16 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <canvas id="Canvas" width="480" height="320"></canvas>
+    <title>Pizza Clicker</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   
-    <div id="buttonBlock">
-       
-    </div>
+   <div class="gameWindow">
+        <div class="clickerColumn">
+           <div class="clickerInfo">
+               <div id="clicks">
+                   Clicks: 0
+               </div>
+               <div id="clickBoost">
+                   Boost: 0
+               </div>               
+           </div>
+           <div id="clickerPic">
+            <img src="img/Toppings-and-color-Step-6.jpg" id="clickerButton" alt="" >
+            </div>
+        </div>
+
+        <div class="bonusColumn">
+            <div class="bonusBlock">
+                Куплено бонусов: 
+            </div>
+        </div>
+
+        <div class="shopColumn">
+              
+               <div class="shopBlock" id="cursorBoostBlock">
+                  
+                   <div class="boostPic">
+                       <img src="img/Toppings-and-color-Step-6.jpg" alt="" width="80">
+                   </div>
+                   
+                    <div class="boostDescription" id="cursorDescription">
+                        <div id="cursorTitle"></div>
+                        <div class="boostInfo" id="cursorInfo"> 
+                        </div>
+                    </div>
+                   
+               </div>
+                
+               <div class="shopBlock" id="grandmaBoostBlock">
+                   <div class="boostPic">
+                       <img src="img/Toppings-and-color-Step-6.jpg" alt="" width="80">
+                   </div>
+                        <div class="boostDescription">
+                        <div id="grandmaTitle">Title</div>
+                        <div class="boostInfo" id="grandmaInfo"></div>
+                    </div>
+               </div>
+               
+               <div class="shopBlock" id="chefBoostBlock">
+                   <div class="boostPic">
+                       <img src="img/Toppings-and-color-Step-6.jpg" alt="" width="80">
+                   </div>
+                    <div class="boostDescription">
+                        <div id="chefTitle">Title</div>
+                        <div class="boostInfo" id="chefInfo"></div>
+                    </div>
+               </div>
+               
+               <div class="shopBlock" id="grandChefBoostBlock">
+                   <div class="boostPic">
+                       <img src="img/Toppings-and-color-Step-6.jpg" alt="" width="80">
+                   </div>
+                    <div class="boostDescription">
+                        <div id="grandChefTitle">Title</div>
+                        <div class="boostInfo" id="grandChefInfo"></div>
+                    </div>
+               </div>
+               
+        </div>    
     
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

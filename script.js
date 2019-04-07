@@ -2,31 +2,75 @@ var click=0; //счётчик кликов
 var boostValue = 0; // значения буста
 var isBoosted = false; //буля для запуска таймера
 
+//Создаем конкструктор буста
 function boostObj (name,value,price,priceMultiplier) {
     this.name = name;
     this.value = value;
     this.price = price;
     this.priceMultiplier = priceMultiplier;
+    this.addBoost = function () {  //метод для изменения цены и добавления буста
+        this.price = addBoost(this.value, this.price, this.priceMultiplier);
+    }
+    
 }
 
 //создаю обьекты бустов
-var cursor = new boostObj("Курсор", 0.1, 10, 1.1);
-var grandma = new boostObj("Бабуля", 1, 15, 2);
-var nikita = new boostObj("Никита", 5, 20, 1.1);
+var cursor = new boostObj("PizzaBoy", 0.1, 10, 1.2);
+var grandma = new boostObj("Grandma", 1, 15, 1.2);
+var chef = new boostObj("Chef", 5, 20, 1.2);
+var grandChef = new boostObj("Grand Chef", 10, 40, 1.2);
 
-//отрисовка блока с кнопками
-var block = document.getElementById("buttonBlock");
-block.innerHTML=" <button id='cursorBoost'>Cursor (+0.1)</button> <button id='grandmaBoost'>Grandma(+1)</button><button id='nikitaBoost'>Nikita(+10)</button>";
 
 //вытаскиваем кнопки из файла
-var cursorButton = document.getElementById("cursorBoost");
-var grandmaButton = document.getElementById("grandmaBoost");
-var nikitaButton = document.getElementById("nikitaBoost");
+var clickerButton = document.getElementById("clickerButton");
+//вытаскиваем элемент вывода кликов
+var clickerValue = document.getElementById("clicks");
+//вытаскиваем элемент вывода буста
+var bonusValue = document.getElementById("clickBoost");
+//функция кликера
+clickerButton.onclick = function(){
+    click++;
+    clickerValue.innerHTML = "Clicks: " + click.toFixed(1);
+}
 
-//отрисовываем холст
-var canvasClick = document.getElementById("Canvas");
-canvasClick.addEventListener('click', increment);
-var ctx = canvasClick.getContext("2d");
+//вытаскиваем блоки из шопа
+var cursorButton = document.getElementById("cursorBoostBlock");
+var grandmaButton = document.getElementById("grandmaBoostBlock");
+var chefButton = document.getElementById("chefBoostBlock");
+var grandChefButton = document.getElementById("grandChefBoostBlock");
+
+
+
+
+//Первичная отрисовка
+var cursorTitle = document.getElementById("cursorTitle");
+var cursorInfo = document.getElementById("cursorInfo");
+
+cursorTitle.innerHTML = cursor.name;
+cursorInfo.innerHTML = "Price: " + cursor.price.toFixed(1) + " Boost: " + cursor.value;
+
+var grandmaTitle = document.getElementById("grandmaTitle");
+var grandmaInfo = document.getElementById("grandmaInfo");
+
+grandmaTitle.innerHTML = grandma.name;
+grandmaInfo.innerHTML = "Price: " + grandma.price.toFixed(1) + " Boost: " + grandma.value;
+
+var chefTitle = document.getElementById("chefTitle");
+var chefInfo = document.getElementById("chefInfo");
+
+chefTitle.innerHTML = chef.name;
+chefInfo.innerHTML = "Price: " + chef.price.toFixed(1) + " Boost: " + chef.value;
+
+var grandChefTitle = document.getElementById("grandChefTitle");
+var grandChefInfo = document.getElementById("grandChefInfo");
+
+grandChefTitle.innerHTML = grandChef.name;
+grandChefInfo.innerHTML = "Price: " + grandChef.price.toFixed(1) + " Boost: " + grandChef.value;
+
+
+
+
+
 
 //функция увеличения буста
 function addBoost(value,price,priceMultiplier){
@@ -34,43 +78,48 @@ function addBoost(value,price,priceMultiplier){
         if(!isBoosted){
             var timerId = setInterval(function() {
                 click+= boostValue;
+                clickerValue.innerHTML="Clicks: " + click.toFixed(1);
+                bonusValue.innerHTML="Boost: " + boostValue.toFixed(1);
             }, 1000);
-        isBoosted = true;     
+        isBoosted = true;  
         }
 
         boostValue += value;
         click-=price;
+        clickerValue.innerHTML="Clicks: " + click.toFixed(1);
+        bonusValue.innerHTML="Boost: " + boostValue.toFixed(1);
         price*=priceMultiplier;
         
         
     }
+    
     return price;
 }
 
 //вызываем добавление буста по кнопке
 cursorButton.onclick = function (){
-   cursor.price = addBoost(cursor.value, cursor.price, cursor.priceMultiplier);
+   cursor.addBoost();
+    cursorInfo.innerHTML="Price: " + cursor.price.toFixed(1) + " Boost: " + cursor.value;
+
 }
 grandmaButton.onclick = function (){
-    grandma.price = addBoost(grandma.value, grandma.price, grandma.priceMultiplier);
-}
-nikitaButton.onclick = function (){
-    nikita.price =addBoost(nikita.value, nikita.price, nikita.priceMultiplier);
+    grandma.addBoost();
+    grandmaInfo.innerHTML="Price: " + grandma.price.toFixed(1) + " Boost: " + grandma.value;
 }
 
-//Увеличение значения клика и отрисовка
-function increment(canvasClick) {  
-    var x = canvasClick.clientX - 240;
-    var y = canvasClick.clientY - 160;
-    var dist= Math.sqrt(y*y + x*x);
-    if (dist<50){
-       click++;
-       redraw();
-    }
-    
+chefButton.onclick = function (){
+    chef.addBoost();
+    chefInfo.innerHTML="Price: " + chef.price.toFixed(1) + " Boost: " + chef.value;
 }
 
-function redraw() {
+grandChefButton.onclick = function (){
+    grandChef.addBoost();
+    grandChefInfo.innerHTML="Price: " + grandChef.price.toFixed(1) + " Boost: " + grandChef.value;
+}
+
+
+
+/*function redraw() {
     ctx.clearRect(0,0, canvasClick.width, canvasClick.height);
     ctx.fillStyle="black";
     ctx.font="20px Verdana";
@@ -97,4 +146,4 @@ function redrawTiming (){
 redrawTiming();
 
 
-
+*/
