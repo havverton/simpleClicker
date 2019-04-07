@@ -8,11 +8,12 @@
     background-color: cornflowerblue;
     height: 98vh; 
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     background-image: url(../img/background1.jpg) ;
     background-repeat:round;
+    padding: 60px 0;
 }
 
 #clickerPic img {
@@ -23,11 +24,13 @@
 #clickerPic img:active {
     border-radius: 150px;
     width: 240px;
+    margin-top: 5px;
 }
 
 .clickerInfo {
     font-size: 50px;
     color: white;
+    height: 30%;
 }
 
 
